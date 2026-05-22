@@ -1,1 +1,105 @@
 Orbit Onboarding is a centralized onboarding and knowledge management platform built using Spring Boot, Spring Security, JWT authentication, PostgreSQL, and Spring Data JPA. The application allows users to register, access training modules, read knowledge articles, and track onboarding progress. I implemented layered architecture with controllers for handling requests, services for business logic, repositories for database interaction, and entities mapped using JPA. Security is handled through JWT-based stateless authentication with BCrypt password encryption. Module progress tracking uses relational mapping and database constraints to ensure users complete modules only once. Swagger was integrated for API testing and documentation.
+USER role
+
+A normal employee/new joiner using the onboarding platform.
+
+Typical actions:
+
+Register and log in
+View training modules
+Read knowledge articles
+Search articles
+Mark modules as completed
+View personal progress
+
+Flow:
+
+USER
+   ↓
+Login
+   ↓
+Read onboarding content
+   ↓
+Complete modules
+   ↓
+Track progress %
+
+Example:
+
+A new employee joins the company:
+
+John
+ ↓
+Reads "Git Workflow"
+ ↓
+Reads "Coding Standards"
+ ↓
+Completes Module 1
+ ↓
+Progress becomes 25%
+ADMIN role
+
+Admin is responsible for maintaining the onboarding content and system data.
+
+Specific actions:
+
+Training Module Management
+
+Create modules:
+
+POST /api/training/module
+
+Update modules:
+
+PUT /api/training/module/{id}
+
+Delete modules:
+
+DELETE /api/training/module/{id}
+
+Example:
+
+Admin creates:
+
+Module:
+"Spring Boot Basics"
+
+Description:
+"Introduction to Spring Boot"
+
+Estimated hours:
+3
+Knowledge Article Management
+
+Create articles:
+
+POST /api/knowledge
+
+Update articles:
+
+PUT /api/knowledge/{id}
+
+Delete articles:
+
+DELETE /api/knowledge/{id}
+
+Example:
+
+Title:
+Git Workflow
+
+Category:
+GIT_WORKFLOW
+
+Content:
+Branch naming rules and pull request process
+Manage onboarding content
+
+Admins act as content owners.
+
+They decide:
+
+Learning sequence (moduleOrder)
+Estimated duration
+Documentation
+Team guidelines
